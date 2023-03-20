@@ -33,10 +33,11 @@ public class TrainSensorImpl implements TrainSensor {
 		if (this.isEmergencyBreakNeeded)
 		controller.activateEmergencyBreak();
 	}
+	
 	@Override
 	public void setEmergencyBool(){
 		this.isEmergencyBreakNeeded = true;
 	}
-	
+
 
 }
