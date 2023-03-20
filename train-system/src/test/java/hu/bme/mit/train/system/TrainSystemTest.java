@@ -49,6 +49,13 @@ public class TrainSystemTest {
 		controller.followSpeed();
 		Assert.assertEquals(0, controller.getReferenceSpeed());
 	}
+	
+	@Test
+	public void UsingEmergencyBreak(){
+		sensor.setEmergencyBool();
+		sensor.emergencyBreak();
+		Assert,assertEquals(0,controller.getReferenceSpeed());
+	}
 
 	
 }

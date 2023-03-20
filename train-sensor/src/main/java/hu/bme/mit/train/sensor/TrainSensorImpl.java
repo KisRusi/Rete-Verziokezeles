@@ -34,4 +34,8 @@ public class TrainSensorImpl implements TrainSensor {
 		controller.activateEmergencyBreak();
 	}
 
+	public void setEmergencyBool(){
+		this.isEmergencyBreakNeeded = true;
+	}
+
 }
