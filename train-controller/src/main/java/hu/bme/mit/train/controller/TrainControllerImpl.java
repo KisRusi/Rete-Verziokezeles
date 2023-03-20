@@ -1,12 +1,16 @@
 package hu.bme.mit.train.controller;
 
 import hu.bme.mit.train.interfaces.TrainController;
+// import com.google.guava.Table;
+import com.google.common.collect.Table;
+import com.google.common.collect.HashBasedTable;
 
 public class TrainControllerImpl implements TrainController {
 
 	private int step = 0;
 	private int referenceSpeed = 0;
 	private int speedLimit = 0;
+	public Table<Long, Integer, Integer> Tachograf = HashBasedTable.create();
 
 	@Override
 	public void followSpeed() {
@@ -20,22 +24,18 @@ public class TrainControllerImpl implements TrainController {
             }
 		}
 
-		enforceSpeedLimit();
-	}
+		RenforceSpeedLimit();	
+	}	
 
-	@Override
-	public int getReferenceSpeed() {
-		return referenceSpeed;
-	}
 
 	@Override
 	public void setSpeedLimit(int speedLimit) {
 		this.speedLimit = speedLimit;
-		enforceSpeedLimit();
+		RenforceSpeedLimit();
 		
 	}
 
-	private void enforceSpeedLimit() {
+	private void RenforceSpeedLimit() {
 		if (referenceSpeed > speedLimit) {
 			referenceSpeed = speedLimit;
 		}
@@ -52,6 +52,22 @@ public class TrainControllerImpl implements TrainController {
 		{
 			referenceSpeed -= 10;
 		}
+	}
+
+	@Override
+	public void addToTachograf(){
+		long time = System.currentTimeMillis();
+		this.Tachograf.put(time, this.step, this.referenceSpeed );
+		
+	}
+
+	@Override
+	public int getReferenceSpeed(){
+		return referenceSpeed;
+	}
+	@Override
+	public Table getTacho(){
+		return this.Tachograf;
 	}
 
 }

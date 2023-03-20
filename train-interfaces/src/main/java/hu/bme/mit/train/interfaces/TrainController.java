@@ -1,4 +1,6 @@
 package hu.bme.mit.train.interfaces;
+import com.google.common.collect.Table;
+import com.google.common.collect.HashBasedTable;
 
 public interface TrainController {
 
@@ -11,5 +13,9 @@ public interface TrainController {
 	void setJoystickPosition(int joystickPosition);
 
 	void activateEmergencyBreak();
+
+	void addToTachograf();
+
+	Table getTacho();
 
 }
