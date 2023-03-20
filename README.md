@@ -1,3 +1,10 @@
+# Rete-Verziokezeles
+---
+ Rusvai Mátyás
+ ---
+ Neptun[^1]
+ [^1]: RE9SKT
+
 # Train Speed Controller
 
 This is a sample application for the verification laboratory.
